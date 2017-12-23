@@ -16,6 +16,11 @@ void scriptRoute() {
   server.send(200, "text/javascript", script);
 }
 
+void styleRoute() {
+  String script = "::style.css::";
+  server.send(200, "text/css", script);
+}
+
 void scanRoute() {
   int n = WiFi.scanNetworks();
   String ssids = "[\n";
@@ -48,6 +53,7 @@ void setup() {
   server.on("/", rootRoute);
   server.on("/scan", scanRoute);
   server.on("/script.js", scriptRoute);
+  server.on("/style.css", styleRoute);
   server.on("/connect", HTTP_POST, connectRoute);
   server.begin();
   Serial.begin(115200);
