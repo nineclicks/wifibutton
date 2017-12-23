@@ -9,12 +9,17 @@ var fillWifi = function(ssids) {
   elem.innerHTML = '<thead><tr><td>SSID</td><td>Signal</td><td>Secured</td></tr></thead>';
   for (var i in ssids) {
     var ssid = ssids[i];
-    var row = '<tr><td>' + ssid.ssid + '</td><td>' + ssid.signal + '%</td>';
+    var row = '<tr onclick="selectWifi(\'' + ssid.ssid + '\');">';
+    row += '<td>' + ssid.ssid + '</td><td>' + ssid.signal + '%</td>';
     row += '<td>' + ((ssid.secured == 1)? '*' : '') + '</td>';
     row += '</tr>';
     elem.innerHTML += row;
   }
 }
+
+var selectWifi = function(name) {
+  document.querySelector('#wifiName').innerHTML = name;
+};
 
 var scanWifi = function(callback) {
   var r = new XMLHttpRequest();
