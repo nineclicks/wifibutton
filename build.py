@@ -18,7 +18,7 @@ matches = re.findall('::(.*?)::', data)
 
 for m in matches:
     with open(m, 'r') as myfile:
-	include = myfile.read().replace('\n', '\\n\\\n').replace('"','\\"')
+	include = myfile.read().replace('\\','\\\\').replace('\n', '\\n\\\n').replace('"','\\"')
     data=data.replace('::' + m + '::', include)
 
 if not os.path.isdir('temp'):
