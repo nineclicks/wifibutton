@@ -27,4 +27,4 @@ file = open('temp/temp.ino', 'w')
 file.write(data)
 file.close()
 
-run('arduino --upload temp/temp.ino')
+run('arduino --upload --preserve-temp-files temp/temp.ino')
